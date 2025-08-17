@@ -182,10 +182,10 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Audio library analyzer tool.")
     parser.add_argument('--dir', type=Path, required=True, help="Directory to analyze.")
-    parser.add_argument('--model', type=str, default="deeptemp-k16-3.pb", help="Path to the TempoCNN model file.")
+    parser.add_argument('--model', type=Path, default="deeptemp-k16-3.pb", help="Path to the TempoCNN model file.")
     parser.add_argument('--bpm_limits', type=int, nargs=2, metavar=('MIN', 'MAX'), default=[90, 180],
                         help="Specify min and max BPM, e.g. --bpm_limits 90 180")
-    parser.add_argument('--safe_folder', type=str, default="originals", help="Folder where all original files will be moved, this won't be analized.")
+    parser.add_argument('--safe_folder', type=Path, default="originals", help="Folder where all original files will be moved, this won't be analized.")
     parser.add_argument('--bitrate', type=str, default="320k", help="Bitrate for MP3 conversion. Examples: 192k, 256k, 320k")
     parser.add_argument('--num_threads', type=int, default=8, help="Number of threads for multiprocessing.")
 
