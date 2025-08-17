@@ -1,8 +1,9 @@
 # dj-library-tool
-An open-source audio library tool for electronic music analysis.
+An open-source audio library tool for electronic music analysis for DJs.
 
 ## Features
 - BPM and key estimation, the results are added to the title of the audio.
+- The key estimation is in camelot key notation for easy usage.
 - If it isn't already in MP3 format, it converts to 320kbps MP3. It keeps the originals and move it to a separate folder (default: originals).
 
 ## Installation
