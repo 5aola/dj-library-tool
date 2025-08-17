@@ -1,0 +1,7 @@
+essentia
+essentia-tensorflow
+music-tag
+pydub
+tqdm
+librosa
+numpy
