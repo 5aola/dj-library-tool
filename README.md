@@ -24,6 +24,7 @@ run.py --dir path/to/music/directory --model path/to/TempoCNN/model
 options:
   -h, --help            show this help message and exit
   --dir DIR             Directory to analyze.
+  --no_camelot          Add this to not use Camelot notation for key estimation.
   --model MODEL         Path to the TempoCNN model file.
   --bpm_limits MIN MAX  Specify min and max BPM, e.g. --bpm_limits 90 180
   --safe_folder SAFE_FOLDER
