@@ -1,14 +1,14 @@
-# dj-library-tool
-An open-source audio library tool for electronic music analysis for DJs.
+# DJ Library Tool
+An open-source audio library tool that helps DJs avoid compatibility issues between different software.
 
 ## Features
-- BPM and key estimation, the results are added to the title of the audio.
+- BPM and Key estimation added to the songs title and meta as well (i. e. `[123-06A] audiofilename.mp3`).
 - The key estimation is in camelot key notation for easy usage.
-- If it isn't already in MP3 format, it converts to 320kbps MP3. It keeps the originals and move it to a separate folder (default: originals).
+- Converts everything to mp3. It keeps the original files and move it to a separate, safe folder (default: originals).
+- Supported formats: wav, mp3, flac, aif
 
 ## Installation
-
-Create and activate a venv
+Create and activate a virtual environment
 
 ```bash
 pip install -r requirements.txt
@@ -19,7 +19,7 @@ pip install -r requirements.txt
 run.py --dir path/to/music/directory --model path/to/TempoCNN/model
 ```
 
-## Parameters
+## Optional Parameters
 ```md
 options:
   -h, --help            show this help message and exit
@@ -30,7 +30,7 @@ options:
   --safe_folder SAFE_FOLDER
                         Folder where all original files will be moved, this
                         won't be analized.
-  --bitrate BITRATE     Bitrate for MP3 conversion. Examples: 192k, 256k, 320k
+  --bitrate BITRATE     Bitrate for MP3 conversion. e.g. --bitrate 320k
   --num_threads NUM_THREADS
                         Number of threads for multiprocessing.
 ```
