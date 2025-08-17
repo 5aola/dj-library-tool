@@ -2,7 +2,7 @@
 An open-source audio library tool that helps DJs avoid compatibility issues between different software.
 
 ## Features
-- BPM and Key estimation added to the songs title and meta as well (i. e. `[123-06A] audiofilename.mp3`).
+- BPM and Key estimation which are added to the songs title and meta (i. e. `[123-06A] audiofilename.mp3`).
 - The key estimation is in camelot key notation for easy usage.
 - Converts everything to mp3. It keeps the original files and move it to a separate, safe folder (default: originals).
 - Supported formats: wav, mp3, flac, aif
