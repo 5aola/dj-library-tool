@@ -14,12 +14,12 @@ Create and activate a virtual environment
 pip install -r requirements.txt
 ```
 
-## Easiest Usage
+## Usage
 ```bash
 run.py --dir path/to/music/directory --model path/to/TempoCNN/model
 ```
 
-## Optional Parameters
+## Parameters
 ```md
 options:
   -h, --help            show this help message and exit
