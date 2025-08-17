@@ -36,6 +36,7 @@ class Analyzer:
     def __init__(
         self, 
         bpm_limits = (90, 180), 
+        camelot: bool = True,
         safe_folder = "originals",
         sample_rate = 11025,
         bitrate = "320k",
@@ -43,6 +44,7 @@ class Analyzer:
         num_threads = 8
         ):
         
+        self.camelot = camelot
         self.supported_extensions = (".wav", ".mp3", ".flac", ".aif")
         self.bitrate = bitrate
         self.num_threads = num_threads
@@ -150,10 +152,12 @@ class Analyzer:
             audio, sr = librosa.load(full_path, sr=self.sr, mono=True)
             bpm = self._estimate_bpm(audio)
             key = self._estimate_key(audio)
-        
-            camelot_key = conv_to_camelot_key(key)
+
+            if self.camelot:
+                key = conv_to_camelot_key(key)
+
             bpm_string = f'0{int(bpm)}' if bpm < 100 else f'{int(bpm)}'
-            prepared_name = f"[{bpm_string}-{camelot_key}]"
+            prepared_name = f"[{bpm_string}-{key}]"
             
             #file = os.path.basename(full_path)
             #ground_truth = int(file[12:15]) if file[0] != '*' else int(file[13:16])
@@ -182,7 +186,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Audio library analyzer tool.")
     parser.add_argument('--dir', type=Path, required=True, help="Directory to analyze.")
-    parser.add_argument('--model', type=Path, default="deeptemp-k16-3.pb", help="Path to the TempoCNN model file.")
+    parser.add_argument('--no_camelot', action='store_true', help="don't use Camelot notation for keys.")
+    parser.add_argument('--model', type=str, default="deeptemp-k16-3.pb", help="Path to the TempoCNN model file.")
     parser.add_argument('--bpm_limits', type=int, nargs=2, metavar=('MIN', 'MAX'), default=[90, 180],
                         help="Specify min and max BPM, e.g. --bpm_limits 90 180")
     parser.add_argument('--safe_folder', type=Path, default="originals", help="Folder where all original files will be moved, this won't be analized.")
@@ -193,6 +198,7 @@ if __name__ == "__main__":
 
     pipeline = Analyzer(
         TempoCNN_path=args.model,
+        camelot=not bool(args.no_camelot),
         bpm_limits=tuple(args.bpm_limits),
         safe_folder=args.safe_folder,
         bitrate=args.bitrate,
