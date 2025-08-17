@@ -17,7 +17,7 @@ pip install -r requirements.txt
 
 ## Usage
 ```bash
-run.py --dir path/to/music/directory --model path/to/TempoCNN/model
+run.py --dir path/to/music/directory
 ```
 
 ## Parameters
